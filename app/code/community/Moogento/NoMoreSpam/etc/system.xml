@@ -7,7 +7,7 @@
   This source file is covered by the Moogento End User License Agreement
   that is bundled with this extension in the file License.html
   It is also available online here:
-  http://www.moogento.com/License.html
+  https://moogento.com/License.html
   
   NOTICE
   
@@ -20,13 +20,13 @@
   File        system.xml
   @category   Moogento
   @package    noMoreSpam
-  @copyright  Copyright (c) 2014 Moogento <info@moogento.com> / All rights reserved.
-  @license    http://www.moogento.com/License.html
+  @copyright  Copyright (c) 2016 Moogento <info@moogento.com> / All rights reserved.
+  @license    https://moogento.com/License.html
 -->
 <config>
     <tabs>
         <moogento translate="label comment" module="nomorespam">
-            <label><![CDATA[<img src="//www.moogento.com/logo/moogento_tinylogo.ln.png" alt="Moogento" height="20" style="vertical-align:bottom;margin-left:-1px;"/> MOOGENTO Extensions]]></label>
+            <label><![CDATA[<img src="//www.moogento.com/logo/moogento_tinylogo.ln.png" alt="Moogento" width="20" style="vertical-align:bottom;margin-left:-1px;"/> MOOGENTO Extensions]]></label>
             <sort_order>200</sort_order>
         </moogento>
     </tabs>

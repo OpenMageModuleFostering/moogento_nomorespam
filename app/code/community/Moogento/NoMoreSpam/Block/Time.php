@@ -6,7 +6,7 @@
 * This source file is covered by the Moogento End User License Agreement
 * that is bundled with this extension in the file License.html
 * It is also available online here:
-* http://www.moogento.com/License.html
+* https://moogento.com/License.html
 * 
 * NOTICE
 * 
@@ -19,8 +19,8 @@
 * File        Time.php
 * @category   Moogento
 * @package    noMoreSpam
-* @copyright  Copyright (c) 2014 Moogento <info@moogento.com> / All rights reserved.
-* @license    http://www.moogento.com/License.html
+* @copyright  Copyright (c) 2016 Moogento <info@moogento.com> / All rights reserved.
+* @license    https://moogento.com/License.html
 */ ?>
 <?php
 class Moogento_NoMoreSpam_Block_Time extends Mage_Adminhtml_Block_System_Config_Form_Field

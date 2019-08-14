@@ -6,7 +6,7 @@
 * This source file is covered by the Moogento End User License Agreement
 * that is bundled with this extension in the file License.html
 * It is also available online here:
-* http://www.moogento.com/License.html
+* https://moogento.com/License.html
 * 
 * NOTICE
 * 
@@ -19,8 +19,8 @@
 * File        ProductController.php
 * @category   Moogento
 * @package    noMoreSpam
-* @copyright  Copyright (c) 2014 Moogento <info@moogento.com> / All rights reserved.
-* @license    http://www.moogento.com/License.html
+* @copyright  Copyright (c) 2016 Moogento <info@moogento.com> / All rights reserved.
+* @license    https://moogento.com/License.html
 */ ?>
 <?php
 require_once 'Mage/Customer/controllers/AccountController.php';
@@ -98,6 +98,10 @@ class Moogento_NoMoreSpam_Customer_AccountController extends Mage_Customer_Accou
         $enable_create_account = mage::getStoreConfig("no_more_spam/no_spam/create_account");
 		if(!$enable_create_account) $isKeyHash = true; // if this section is off in nomorespam config then don't check our fields
 		$version_magento = substr(mage::getVersion(),0,3);
+		$version_magento_full = mage::getVersion();
+		$version_magento = substr($version_magento_full,0,3);
+		$version_magento_sub = substr($version_magento_full,3,1);
+		
         /** @var $session Mage_Customer_Model_Session */
         $session = $this->_getSession();
         if ($session->isLoggedIn()) {
@@ -118,7 +122,11 @@ class Moogento_NoMoreSpam_Customer_AccountController extends Mage_Customer_Accou
 		            $errors = $this->_getCustomerErrors($customer);
 
 		            if (empty($errors)) {
+						// cleanPaswordsValidationData doesn't exist until Magento 1.9.1 +
+						// Thanks to Mark Hewgill for this fix :)
+                		if(isset($version_magento_sub) && ($version_magento_sub > 0)) {
 		                $customer->cleanPasswordsValidationData();
+						}
 		                $customer->save();
 		                $this->_dispatchRegisterSuccess($customer);
 		                $this->_successProcessRegistration($customer);

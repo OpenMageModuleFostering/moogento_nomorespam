@@ -6,7 +6,7 @@
 * This source file is covered by the Moogento End User License Agreement
 * that is bundled with this extension in the file License.html
 * It is also available online here:
-* http://www.moogento.com/License.html
+* https://moogento.com/License.html
 * 
 * NOTICE
 * 
@@ -19,8 +19,8 @@
 * File        IndexController.php
 * @category   Moogento
 * @package    noMoreSpam
-* @copyright  Copyright (c) 2014 Moogento <info@moogento.com> / All rights reserved.
-* @license    http://www.moogento.com/License.html
+* @copyright  Copyright (c) 2016 Moogento <info@moogento.com> / All rights reserved.
+* @license    https://moogento.com/License.html
 */ ?>
 <?php
 class Moogento_NoMoreSpam_ActiveController extends Mage_Core_Controller_Front_Action
@@ -33,12 +33,12 @@ class Moogento_NoMoreSpam_ActiveController extends Mage_Core_Controller_Front_Ac
 			$review->setStatusId(Mage_Review_Model_Review::STATUS_APPROVED);
 			Mage::getSingleton('core/session')->addSuccess('The review has been approved'); 
 			$review->save();
-		}
-		catch(Exception $e){
-			
+		} catch(Exception $e){
+			Mage::getSingleton('core/session')->addError('The review has NOT been approved'); 
 		}
 		$this->renderLayout();
 	}
+	
 	public function deleteAction(){
 		$this->loadLayout();
 		$id = $this->getRequest()->getParam("id");

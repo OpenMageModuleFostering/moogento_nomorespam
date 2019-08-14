@@ -6,7 +6,7 @@
 * This source file is covered by the Moogento End User License Agreement
 * that is bundled with this extension in the file License.html
 * It is also available online here:
-* http://www.moogento.com/License.html
+* https://moogento.com/License.html
 * 
 * NOTICE
 * 
@@ -19,8 +19,8 @@
 * File        ProductController.php
 * @category   Moogento
 * @package    noMoreSpam
-* @copyright  Copyright (c) 2014 Moogento <info@moogento.com> / All rights reserved.
-* @license    http://www.moogento.com/License.html
+* @copyright  Copyright (c) 2016 Moogento <info@moogento.com> / All rights reserved.
+* @license    https://moogento.com/License.html
 */ ?>
 <?php
 require_once 'Mage/Review/controllers/ProductController.php';
@@ -57,24 +57,23 @@ class Moogento_NoMoreSpam_Review_ProductController extends Mage_Review_ProductCo
 		try {
 			$check_name_yn = 1;
 			$check_message_yn = 0;
+			$time_start = '';
 			$field_toofast = Mage::helper("nomorespam")->getNmsTooFast();
 	        $post = $this->getRequest()->getPost();
 			$check_review_yn = mage::getStoreConfig('no_more_spam/no_spam/enabled_review_review_link');
 			$check_title_yn = mage::getStoreConfig('no_more_spam/no_spam/enabled_review_title_link');
 			$check_faster_yn = mage::getStoreConfig('no_more_spam/no_spam/too_fast_form');
 			
-			if(($check_review_yn == 1) && (isset($post['detail'])) && (trim($post['detail'])!='') ) {
-				if($this->_checkForLink($post['detail']) === TRUE) {$has_spam = TRUE;}
-			}
-			
-			if(($check_title_yn == 1) && (isset($post['title'])) && (trim($post['title'])!='') ) {
-				if($this->_checkForLink($post['title']) === TRUE) {$has_spam = TRUE;}
-			}
-			
-			if(($check_faster_yn == 1) && (isset($post[$field_toofast])) && (trim($post[$field_toofast])!='') ) {
+			if( ($check_faster_yn == 1) && (isset($post[$field_toofast])) && (trim($post[$field_toofast])!='') )
 				$time_start = $post[$field_toofast];
-				if($time_end - $time_start <=3 ) {$has_spam = TRUE;}
-			}
+				
+			if(
+				( ($check_review_yn == 1) && (isset($post['detail'])) && (trim($post['detail'])!='') && ($this->_checkForLink($post['detail']) === TRUE) )
+				|| ( ($check_title_yn == 1) && (isset($post['title'])) && (trim($post['title'])!='') && ($this->_checkForLink($post['title']) === TRUE) )
+				|| ( (isset($time_end) && isset($time_start)) && ($time_end - $time_start <=3 ) )
+			)
+					$has_spam = TRUE;
+			
 		} catch (Exception $e) {
             Mage::getSingleton('customer/session')->addError(Mage::helper('contacts')->__('Error: Unable to send this message. Please, try again later').' '.$e);
             $this->_redirect('*/*/');
@@ -84,12 +83,11 @@ class Moogento_NoMoreSpam_Review_ProductController extends Mage_Review_ProductCo
 	
     public function postAction()
     {
-    	
+		$rating = array();
         if ($data = Mage::getSingleton('review/session')->getFormData(true)) {
-            $rating = array();
-            if (isset($data['ratings']) && is_array($data['ratings'])) {
+            
+            if (isset($data['ratings']) && is_array($data['ratings']))
                 $rating = $data['ratings'];
-            }
         } else {
             $data   = $this->getRequest()->getPost();
             $rating = $this->getRequest()->getParam('ratings', array());
@@ -97,13 +95,13 @@ class Moogento_NoMoreSpam_Review_ProductController extends Mage_Review_ProductCo
         $enable_review = mage::getStoreConfig("no_more_spam/no_spam/enabled_review");
         $enable_review_rating = mage::getStoreConfig("no_more_spam/no_spam/enabled_review_rating");
         $isKeyHash = false;
+		
         if($enable_review == 1){
 			$field_1 = Mage::helper("nomorespam")->getNmsField1();
 			$empty_text = Mage::helper("nomorespam")->getNmsField2();
 
-	        if(isset($data[$field_1]) && isset($data[$empty_text])){
+	        if(isset($data[$field_1]) && isset($data[$empty_text]))
 	            $isKeyHash = $this->checkHashKey($data[$field_1], $data[$empty_text]);
-	        }
 	    }
 		//else $isKeyHash = true; //
         
@@ -123,15 +121,13 @@ class Moogento_NoMoreSpam_Review_ProductController extends Mage_Review_ProductCo
 
             $validate = $review->validate();
             if ($validate === true) {
-		        if($enable_review == 1 && $this->_checkManualSpam()) {	
+		        if($enable_review == 1 && $this->_checkManualSpam())
 		        	$session->addError($this->__('Unable to add this review at the moment.'));
-		        }
 				else
 				{
-					if($enable_review == 1 && count($rating) < count($rating_collection) && $enable_review_rating == 1){
+					if($enable_review == 1 && count($rating) < count($rating_collection) && $enable_review_rating == 1)
 						$session->addError($this->__('Unable to add this review at the moment. Please choise ratings'));
-					}
-					else{
+					else {
 						try {
 							$review->setEntityId($review->getEntityIdByCode(Mage_Review_Model_Review::ENTITY_PRODUCT_CODE))
 								->setEntityPkValue($product->getId())
@@ -167,9 +163,8 @@ class Moogento_NoMoreSpam_Review_ProductController extends Mage_Review_ProductCo
                     }
 					$session->addError($this->__('Sorry, unable to post the review.'));
                 }
-                else {
+                else
                     $session->addError($this->__('Unable to post the review.'));
-                }
             }
         }else{
 			$session->setFormData($data);
