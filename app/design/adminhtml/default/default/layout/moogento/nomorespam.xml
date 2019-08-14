@@ -26,7 +26,6 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
-            <!-- <action method="addJs"><script>moogento/pickpack/adminhtml/grouping.js</script></action> -->
             <action method="addCss"><name>moogento/nomorespam/nomorespam.css</name></action>
         </reference>
     </default>

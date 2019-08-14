@@ -22,10 +22,10 @@
 * @copyright  Copyright (c) 2014 Moogento <info@moogento.com> / All rights reserved.
 * @license    http://www.moogento.com/License.html
 */ ?>
-<div id="<?php echo Mage::helper("nomorespam")->createId();?>">
-    <input type="text" name="<?php echo Mage::helper("nomorespam")->createNameInput1();?>" id="<?php echo Mage::helper("nomorespam")->createNameInput1()?>" value="<?php echo Mage::helper("nomorespam")->createValue(); ?>" style="display:none !important;" />
-    <input type="hidden" name="<?php echo Mage::helper("nomorespam")->createNameInput2();?>" id="<?php echo Mage::helper("nomorespam")->createNameInput2();?>" value=""/>
+<div id="<?php echo Mage::helper("nomorespam")->getNmsId();?>">
+    <input type="text" name="<?php echo Mage::helper("nomorespam")->getNmsField1();?>" id="<?php echo Mage::helper("nomorespam")->getNmsField1()?>" value="<?php echo Mage::helper("nomorespam")->createValue(); ?>" style="display:none !important;" />
+    <input type="hidden" name="<?php echo Mage::helper("nomorespam")->getNmsField2();?>" id="<?php echo Mage::helper("nomorespam")->getNmsField2();?>" value="" />
 </div>
 <script type="text/javascript">
-Element.addMethods({getText:function(element){a=$(element);return a.innerHTML;}});$(document).on('dom:loaded',function(){var b="<?php echo Mage::helper("nomorespam")->createId();?>";var c=$(b).getText();if(c){$('contactForm').insert({top:c});$(b).remove();}});
+Element.addMethods({getText:function(element){a=$(element);return a.innerHTML;}});$(document).on('dom:loaded',function(){var b="<?php echo Mage::helper("nomorespam")->getNmsId();?>";var c=$(b).getText();if(c){$('review-form').insert({top:c});$(b).remove();}});
 </script>

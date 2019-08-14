@@ -25,21 +25,15 @@
 -->
 <layout version="0.1.0">
     <default>
-
     </default>
-    <!--<nomorespam_index_index>
-        <reference name="content">
-            <block type="nomorespam/nomorespam" name="nomorespam" template="nomorespam/nomorespam.phtml" />
-        </reference>
-    </nomorespam_index_index>-->
-    <contacts_index_index translate="label">
 
+    <contacts_index_index translate="label">
         <reference name="content">
             <block type="nomorespam/nomorespam" name="nomorespam_contact" template="nomorespam/nomorespam_contact.phtml" />
         </reference>
     </contacts_index_index>
+	
     <review_product_list>
-
         <reference name="content">
             <block type="nomorespam/nomorespam" name="nomorespam_review" template="nomorespam/nomorespam_review.phtml" />
         </reference>

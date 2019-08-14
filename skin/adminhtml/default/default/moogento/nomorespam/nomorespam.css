@@ -57,8 +57,18 @@ File        nomorespam.css
 	font-style: normal;
 }
 div.moogento-notice {
-	background-image: -moz-linear-gradient(left top , #FFFFFF 10%, #EEEEEE 30%, #CCCCCC 100%);
-	background-image: -moz-linear-gradient(left top , #FFFFFF 10%, #EEEEEE 30%, #58C28C 61%, #3bb878 91%);
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient( left, #FFFFFF 10%, #EEEEEE 30%, #58C28C 61%, #3BB878 91%);
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient( left, #FFFFFF 10%, #EEEEEE 30%, #58C28C 61%, #3BB878 91%);
+	/* Opera */ 
+	background-image: -o-linear-gradient( left, #FFFFFF 10%, #EEEEEE 30%, #58C28C 61%, #3BB878 91%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left , right bottom, color-stop(0.1, #FFFFFF), color-stop(0.3, #EEEEEE), color-stop(0.61, #58C28C), color-stop(0.91, #3BB878));
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient( left, #FFFFFF 10%, #EEEEEE 30%, #58C28C 61%, #3BB878 91%);
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: linear-gradient(to right, #FFFFFF 10%, #EEEEEE 30%, #58C28C 61%, #3BB878 91%);
 	border: 1px solid #FFF;
 	border-radius: 7px 3px 3px 7px;
 	margin: -24px 0 4px;
@@ -80,6 +90,7 @@ h3.moogento-header {
 	margin-top: 2px;
 	color: #777777;
 	background-position: 1px 2px;
+	font-style:italic;
 }
 .form-list p.note:hover {
 	color: #333;
@@ -90,6 +101,7 @@ h3.moogento-header {
 .floatingcows {
   min-height: 109px;
   padding: 4px 0 0 10px;
+  background-repeat:no-repeat;
 }
 .floatingsheep {
   background-repeat: no-repeat;
@@ -124,6 +136,12 @@ h3.moogento-header {
 }
 #wikilinks a span {
     font-size: 1.5em;
+}
+/* saf3+, chrome1+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#wikilinks a span {
+		font-size: 1em;
+	}
 }
 #wikilinks a:hover {
   border-bottom: 1px solid darkgreen;
@@ -168,9 +186,9 @@ h3.moogento-header {
 	color: #333;
 }
 .moogento-notice #mooink {
-  height: 146px;
+  height: 115px;
   text-decoration: none;
-  width: 149px;
+  width: 140px;
   display: block;
 }
 #mooinfo .tick em, #mooinfo .alert em, .moo_config_info em {
@@ -250,7 +268,7 @@ em.moo_bull {
   display: block;
   float: right;
   font-family: "OpenSansReg","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-  margin: -4.1em 21em 0 0;
+  margin: -4.1em 5em 0 0;
   position: relative;
   width: 27em;
 }
@@ -269,5 +287,15 @@ em.moo_bull {
 }
 .ext_info a:hover b {
 	background-color: #90EE90;
+}
+img.small-image-preview {
+  height: 40px !important;
+  max-width: 150px !important;
+  width: auto !important;
+}
+.collapseable .moo_config_info a {
+  border-bottom: 1.5px solid #4682B4 !important;
+  color: #4682B4 !important;
+  line-height: 24px !important;
 }
 /********  *end* SHARED CONFIG CSS  **********/
