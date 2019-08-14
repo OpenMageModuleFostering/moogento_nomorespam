@@ -1,0 +1,273 @@
+/*
+Moogento
+
+SOFTWARE LICENSE
+
+This source file is covered by the Moogento End User License Agreement
+that is bundled with this extension in the file License.html
+It is also available online here:
+http://www.moogento.com/License.html
+
+NOTICE
+
+If you customize this file please remember that it will be overwrtitten
+with any future upgrade installs. 
+If you'd like to add a feature which is not in this software, get in touch
+at www.moogento.com for a quote.
+
+ID          pe+sMEDTrtCzNq3pehW9DJ0lnYtgqva4i4Z=
+File        nomorespam.css
+@category   Moogento
+@package    noMoreSpam
+@copyright  Copyright (c) 2014 Moogento <info@moogento.com> / All rights reserved.
+@license    http://www.moogento.com/License.html
+*/
+/********  SHARED CONFIG CSS  **********/
+
+@font-face {
+	font-family: OpenSansReg;
+	src: url(fonts/OpenSans-Regular-webfont.eot);
+	src: local('fonts/OpenSansReg'), local('fonts/OpenSansReg'),
+	url(fonts/OpenSans-Regular-webfont.ttf) format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: OpenSansItalic;
+	src: url(fonts/OpenSans-Italic-webfont.eot);
+	src: local('fonts/OpenSansItalic'), local('fonts/OpenSansItalic'),
+	url(fonts/OpenSans-Italic-webfont.ttf) format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: OpenSansExtraBoldItalic;
+	src: url(fonts/OpenSans-ExtraBoldItalic-webfont.eot);
+	src: local('fonts/OpenSansExtraBoldItalic'), local('fonts/OpenSansExtraBoldItalic'),
+	url(fonts/OpenSans-ExtraBoldItalic-webfont.ttf) format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: AllerDisplay;
+	src: url(fonts/allerdisplay-webfont.eot);
+	src: local('fonts/allerdisplay'), local('fonts/allerdisplay'),
+	url(fonts/allerdisplay-webfont.ttf) format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+div.moogento-notice {
+	background-image: -moz-linear-gradient(left top , #FFFFFF 10%, #EEEEEE 30%, #CCCCCC 100%);
+	background-image: -moz-linear-gradient(left top , #FFFFFF 10%, #EEEEEE 30%, #58C28C 61%, #3bb878 91%);
+	border: 1px solid #FFF;
+	border-radius: 7px 3px 3px 7px;
+	margin: -24px 0 4px;
+	padding: 0;
+	height:114px;
+}
+h3.moogento-header {
+	display: none;
+}
+.columns .form-list td.value {
+	width: 550px;
+}
+.comment_code {
+	background-color: #DDDDDD;
+	font-family: courier,sans-serif;
+}
+.form-list p.note {
+	line-height: 11px;
+	margin-top: 2px;
+	color: #777777;
+	background-position: 1px 2px;
+}
+.form-list p.note:hover {
+	color: #333;
+}
+#row_moogento_shipeasy_moodetails_license .note img, #row_pickpack_options_moodetails_license .note img {
+	margin: 0px 0 -12px -14px;
+}
+.floatingcows {
+  min-height: 109px;
+  padding: 4px 0 0 10px;
+}
+.floatingsheep {
+  background-repeat: no-repeat;
+  background-size: auto 127px;
+  display: block;
+  float: left;
+  height: 127px;
+  left: -26px;
+  margin: 0;
+  position: relative;
+  top: -5px;
+  width: 152px;
+}
+#wikilinks {
+  display: block;
+  margin: -1em 0 0;
+}
+#wikilinks li {
+  display: inline-block;
+  margin: 0 2em 0 0;
+}
+#wikilinks a {
+  border-bottom: 1px dashed #008000;
+  color: #008000;
+  float: left;
+  font-size: 1.2em;
+  font-weight: 900;
+  margin: -3em 0 0;
+  text-decoration: none;
+  font-family: "opensansreg",helvetica,sans-serif;
+  text-shadow: 1px 1px 1px #FFFFFF;
+}
+#wikilinks a span {
+    font-size: 1.5em;
+}
+#wikilinks a:hover {
+  border-bottom: 1px solid darkgreen;
+  color: darkgreen;
+}
+#mooinfo {
+	padding:10px 0;
+}
+#mooinfo h4 {
+  font-family: "OpenSansExtraBoldItalic","AllerDisplay","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-size: 38px;
+  letter-spacing: -1.8px;
+  margin: -8px 0 7px;
+  text-shadow: 3px 2px 0px #FFFFFF;
+}
+#mooinfo li {
+  border: 1px solid #FFFFFF;
+  border-radius: 2px;
+  clear: both;
+  color: #333333;
+  display: inline-block;
+  float: left;
+  font-size: 14px;
+  line-height: 15px;
+  margin: 2px 12px 6px 0;
+  min-width: 25em;
+  padding: 8px 6px 7px 7px;
+}
+#mooinfo li.alert {
+	background-color: #F7B167;
+}
+#mooinfo li.tick {
+  background-color: #3BB878;
+  color: #FFFFFF;
+}
+#mooinfo a {
+	font-weight: 400;
+	text-decoration: none;
+	border-width: 0;
+}
+#mooinfo, #mooinfo a, #mooinfo h4 {
+	color: #333;
+}
+.moogento-notice #mooink {
+  height: 146px;
+  text-decoration: none;
+  width: 149px;
+  display: block;
+}
+#mooinfo .tick em, #mooinfo .alert em, .moo_config_info em {
+	background-image: url("images/moo_tick_white.png");
+	background-size:18px;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	float: left;
+	height: 18px;
+	width: 18px;
+	margin: -1px 8px 0 0;
+}
+#mooinfo .alert em {
+	background-image: url("images/moo_alert_red.png");
+}
+.moo_config_info {
+	background-color: #E9F6F3;
+	border: 2px solid #D5E9EA;
+	border-radius: 3px;
+	clear: both;
+	color: #585858;
+	float: left;
+	font-size: 13px;
+	margin: 0 auto 8px;
+	padding: 5px 8px 4px 6px;
+}
+.moo_config_info em {
+	background-image: url("images/moo_info_small_blue.png");
+	margin: 0 5px 0 0;
+}
+.moogento-config-title h4 {
+	border-radius: 2px;
+	color: #FFFFFF;
+	font-family: "opensansreg","helvetica",sans-serif;
+	font-size: 14px;
+	font-style: italic;
+	font-weight: 100;
+	line-height: 14px;
+	margin: 5px 0 2px -19px;
+	padding: 4px 6px 5px 6px;
+	text-align: left;
+	width: 17em;
+}
+.arrow_box {
+	position: relative;
+	background: #88b7d5;
+}
+.arrow_box:after {
+	top: 100%;
+	left: 5%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #88b7d5;
+	border-width: 8px;
+	margin-left: -8px;
+}
+em.moo_down_arrow {
+	color: #999999;
+	font-size: 17px;
+	font-weight: 900;
+	margin: -2px 2px 0 0;
+}
+em.moo_bull {
+	color: #ADD8E6;
+	float: left;
+	font-size: 25px;
+	font-weight: 900;
+	margin: 0 6px 0 -3px;
+	text-shadow: 1px 1px 1px #333333;
+}
+.ext_info {
+  display: block;
+  float: right;
+  font-family: "OpenSansReg","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  margin: -4.1em 21em 0 0;
+  position: relative;
+  width: 27em;
+}
+.ext_info b {
+	background-color: #FFFFFF;
+	border-radius: 8px;
+	float: right;
+	font-family: "OpenSansReg","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	font-weight: 100;
+	margin: 0px 0 0 7px;
+	padding: 0 5px 1px 7px;
+}
+.ext_info a:hover, .ext_info a:hover b {
+	text-decoration: none;
+	border-width: 0;
+}
+.ext_info a:hover b {
+	background-color: #90EE90;
+}
+/********  *end* SHARED CONFIG CSS  **********/
