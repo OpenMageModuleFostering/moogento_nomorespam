@@ -6,21 +6,21 @@
 * This source file is covered by the Moogento End User License Agreement
 * that is bundled with this extension in the file License.html
 * It is also available online here:
-* https://moogento.com/License.html
+* http://www.moogento.com/License.html
 * 
 * NOTICE
 * 
 * If you customize this file please remember that it will be overwrtitten
 * with any future upgrade installs. 
 * If you'd like to add a feature which is not in this software, get in touch
-* at moogento.com for a quote.
+* at www.moogento.com for a quote.
 * 
 * ID          pe+sMEDTrtCzNq3pehW9DJ0lnYtgqva4i4Z=
 * File        Data.php
 * @category   Moogento
 * @package    noMoreSpam
-* @copyright  Copyright (c) 2016 Moogento <info@moogento.com> / All rights reserved.
-* @license    https://moogento.com/License.html
+* @copyright  Copyright (c) 2014 Moogento <info@moogento.com> / All rights reserved.
+* @license    http://www.moogento.com/License.html
 */ ?>
 <?php
 
@@ -248,8 +248,7 @@ class Moogento_NoMoreSpam_Helper_Data extends Mage_Core_Helper_Abstract
 	
     private function _checkForLink($text){	
 		foreach($this->_spam_link_words as $a) {
-			if (stripos($text,$a) !== false)
-				return true;
+			if (stripos($text,$a) !== false) return true;
 		}
 		return false;
     }
@@ -266,37 +265,42 @@ class Moogento_NoMoreSpam_Helper_Data extends Mage_Core_Helper_Abstract
 			$check_title_yn = mage::getStoreConfig('no_more_spam/no_spam/enabled_review_title_link');
 			$check_faster_yn = mage::getStoreConfig('no_more_spam/no_spam/too_fast_form');
 			
-			if(($check_faster_yn == 1) && (isset($post[$field_toofast])) && (trim($post[$field_toofast])!='') )
+			if(($check_review_yn == 1) && (isset($post['detail'])) && (trim($post['detail'])!='') ) {
+				if($this->_checkForLink($post['detail']) === TRUE) {$has_spam = TRUE;}
+			}
+			
+			if(($check_title_yn == 1) && (isset($post['title'])) && (trim($post['title'])!='') ) {
+				if($this->_checkForLink($post['title']) === TRUE) {$has_spam = TRUE;}
+			}
+			
+			if(($check_faster_yn == 1) && (isset($post[$field_toofast])) && (trim($post[$field_toofast])!='') ) {
 				$time_start = $post[$field_toofast];
-				
-			if(
-				 ( ($check_review_yn == 1) && (isset($post['detail'])) && (trim($post['detail'])!='') && ($this->_checkForLink($post['detail']) === TRUE) )
-				 || ( ($check_title_yn == 1) && (isset($post['title'])) && (trim($post['title'])!='') || ($this->_checkForLink($post['title']) === TRUE) )
-				 || ( isset($time_end) && isset($time_start) && ($time_end - $time_start <=3 ) )
-			 )
-					 $has_spam = TRUE;
-
+				if($time_end - $time_start <=3 ) {$has_spam = TRUE;}
+			}
 		} catch (Exception $e) {
             Mage::getSingleton('customer/session')->addError(Mage::helper('contacts')->__('Error: Unable to send this message. Please, try again later').' '.$e);
             $this->_redirect('*/*/');
 		}	
         return $has_spam;
     }
-	
     public function checkHashKey_f($data,$rating){
     	$isKeyHash = false;
     	$session    = Mage::getSingleton('core/session');
         $field_1 = $this->getNmsField1();
         $empty_text = $this->getNmsField2();
-        if(isset($data[$field_1]) && isset($data[$empty_text]))
+        if(isset($data[$field_1]) && isset($data[$empty_text])){
             $isKeyHash = $this->checkHashKey($data[$field_1], $data[$empty_text]);
-        elseif(!(isset($data[$field_1])) && (!(isset($data[$empty_text])))) {
+        }
+        else 
+        {
+            if(!(isset($data[$field_1])) && (!(isset($data[$empty_text]))))
+            {
                 $isKeyHash = true; 
-                $moo_message = 'Your review form is not protected as you have a custom-coded form. Please add the code described *<a href="https://moogento.com/guides/noMoreSpam!_Quickstart">here</a>* to enable NoMoreSpam! for your product reviews.';
+                $moo_message = 'Your review form is not protected as you have a custom-coded form. Please add the code described *<a href="http://www.moogento.com/guides/noMoreSpam!_Quickstart">here</a>* to enable NoMoreSpam! for your product reviews.';
                 Mage::getSingleton('adminhtml/session')->addWarning($moo_message);
                 Mage::log($moo_message, null, 'moogento_nomorespam.log');
+            }
         }
-
         $enable_review = mage::getStoreConfig("no_more_spam/no_spam/enabled_review");
         $enable_review_rating = mage::getStoreConfig("no_more_spam/no_spam/enabled_review_rating");
         if(!$enable_review) $isKeyHash = true; // if this section is off in nomorespam config then don't check our fields
