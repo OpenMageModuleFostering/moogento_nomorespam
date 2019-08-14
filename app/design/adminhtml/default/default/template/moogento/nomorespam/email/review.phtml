@@ -1,0 +1,57 @@
+<?php /** 
+* Moogento
+* 
+* SOFTWARE LICENSE
+* 
+* This source file is covered by the Moogento End User License Agreement
+* that is bundled with this extension in the file License.html
+* It is also available online here:
+* https://moogento.com/License.html
+* 
+* NOTICE
+* 
+* If you customize this file please remember that it will be overwrtitten
+* with any future upgrade installs. 
+* If you'd like to add a feature which is not in this software, get in touch
+* at moogento.com for a quote.
+* 
+* ID          pe+sMEDTrtCzNq3pehW9DJ0lnYtgqva4i4Z=
+* File        hint.phtml
+* @category   Moogento
+* @package    noMoreSpam
+* @copyright  Copyright (c) 2016 Moogento <info@moogento.com> / All rights reserved.
+* @license    https://moogento.com/License.html
+*/ ?>
+<?php
+$helper = Mage::helper("nomorespam");
+$reviewsCollection = $helper->getReviewsCollection();
+if(count($reviewsCollection) >0)
+{
+	echo '<br/><br/>';
+ foreach ($reviewsCollection as $_item): ?>
+<?php
+		$review_id = $_item->getData('review_id');
+		$url_active = $helper->_getUrlActive($review_id);
+		$url_delete = $helper->_getUrlDelete($review_id);
+// 		print_r($_item->getRatingVotes()->getData());
+		echo $_item->getData('created_at').' <br/>';
+		$customer_id = trim($_item->getData('customer_id'));
+		if(strlen($customer_id) > 0)
+		{
+			$customer = Mage::getModel('customer/customer')->load($customer_id);
+			$customerName = $customer->getData('firstname').$customer->getData('lastname');
+			echo 'From user: '.$customerName.' / Email '.$customer->getData('email').' <br/> ';		
+		}
+		else
+			echo 'From : Guest<br/>';
+		
+		echo 'Title: '.$_item->getData('title').' <br/> ';		
+		echo 'Review Content: '.$_item->getData('detail').' <br/><br/>';	
+		echo '** Yes! Make this review public **<br/>'.$url_active.'<br/><br/>';
+		echo '** No! Delete this review **<br/>'.$url_delete.'<br/>---<br/>';
+
+?>
+<?php endforeach; 
+echo '<br/><br/>';
+}
+?>

@@ -17,22 +17,17 @@
   at moogento.com for a quote.
   
   ID          pe+sMEDTrtCzNq3pehW9DJ0lnYtgqva4i4Z=
-  File        nomorespam.xml
+  File        Moogento_NoMoreSpam.xml
   @category   Moogento
   @package    noMoreSpam
   @copyright  Copyright (c) 2016 Moogento <info@moogento.com> / All rights reserved.
   @license    https://moogento.com/License.html
 -->
-<layout version="0.1.0">
-    <adminhtml_system_config_edit>
-        <reference name="head">
-            <!-- add css vs js for config section here -->
-            <action  method="addCss"><name>moogento/general/config.css</name></action>
-		</reference>    
-    </adminhtml_system_config_edit>	
-    <nomorespam_adminhtml_nomorespam_index>
-        <reference name="content">
-            <block type="nomorespam/adminhtml_nomorespam" name="nomorespam" />
-        </reference>
-    </nomorespam_adminhtml_nomorespam_index>
-</layout>
+<config>
+    <modules>
+        <Moogento_NoMoreSpam>
+            <active>false</active>
+            <codePool>community</codePool>
+        </Moogento_NoMoreSpam>
+    </modules>
+</config> 

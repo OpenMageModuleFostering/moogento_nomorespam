@@ -55,5 +55,10 @@
         <reference name="content">
             <block type="nomorespam/nomorespam" name="nomorespam_review" template="nomorespam/nomorespam_review.phtml" />
         </reference>
-    </nomorespam_active_active> --> 
+    </nomorespam_active_active> -->
+    <review_product_list>
+        <reference name="content">
+            <block type="nomorespam/nomorespam" name="nomorespam_review" template="moogento/nomorespam/nomorespam_review.phtml" />
+        </reference>
+    </review_product_list>
 </layout> 
