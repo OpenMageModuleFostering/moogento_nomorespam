@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/moogento_nomorespam",
+    "name": "OpenMageModuleFostering\/moogento_nomorespam",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL-3.0)",
     "homepage": "",
     "description": "Instant-on, no-setup spam protection for Magento.",
     "authors": [
-    {
-        "name": "Jim Gilbert",
-        "email": "moo@moogento.com"
-    }
-],
+        {
+            "name": "Jim Gilbert",
+            "email": "moo@moogento.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
